@@ -6,7 +6,7 @@
 #    By: pabastid <pabastid@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 13:13:45 by pabastid          #+#    #+#              #
-#    Updated: 2023/08/29 17:31:58 by pabastid         ###   ########.fr        #
+#    Updated: 2023/08/30 21:03:39 by pabastid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,12 @@ NAME			=	MATIAS
 
 MAKEFILE			=	Makefile
 
-SRCS			=	init_window.c
+SRCS			=	sources/init_window.c sources/main.c sources/init_window_image.c
 
 OBJS			=	$(SRCS:.c=.o)
 
 RM				=	rm -f
-CFLAGS			=	-Wall -Wextra -Werror -I mlx
+CFLAGS			=	-Wall -Wextra -Werror -I includes/mlx
 
 %.o: %.c  $(MAKEFILE)
 	@$(CC) $(CFLAGS) -c $< -o $@
