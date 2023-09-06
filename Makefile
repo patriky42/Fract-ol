@@ -6,30 +6,32 @@
 #    By: pabastid <pabastid@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 13:13:45 by pabastid          #+#    #+#              #
-#    Updated: 2023/08/30 21:03:39 by pabastid         ###   ########.fr        #
+#    Updated: 2023/08/31 12:14:26 by pabastid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 MAKE			=	make --no-print-directory
 NAME			=	MATIAS
 
-MAKEFILE			=	Makefile
+MAKEFILE		=	Makefile
 
-SRCS			=	sources/init_window.c sources/main.c sources/init_window_image.c
-
-OBJS			=	$(SRCS:.c=.o)
+PUSH			=	sources/main.c $(SRCS)
+SRCS			=	sources/init_window_image.c
+OBJS			=	$(PUSH:.c=.o)
 
 RM				=	rm -f
-CFLAGS			=	-Wall -Wextra -Werror -I includes/mlx
+CFLAGS			=	-Wall -Wextra -Werror -I includes/mlx -I includes
 
 %.o: %.c  $(MAKEFILE)
 	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "$< compiled!"
 
 all:
 	@$(MAKE) $(NAME)
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) -L includes/mlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	@echo "\nFractol executable created!"
 
 clean:
 	@$(RM) $(OBJS)
