@@ -6,7 +6,7 @@
 /*   By: pabastid <pabastid@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 20:36:16 by pabastid          #+#    #+#             */
-/*   Updated: 2023/09/06 12:06:14 by pabastid         ###   ########.fr       */
+/*   Updated: 2023/09/08 17:49:34 by pabastid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,26 @@ typedef struct s_data
 	int		endian;
 }			t_data;
 
+typedef struct s_mlx
+{
+	int (*function)(float, float);
+		// solo se pone el tipo de variablle que recibe
+	void	*mlx;
+	void	*mlx_window;
+	t_data	image;
+	float	zoom;
+}			t_mlx;
+
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void		draw_window(t_mlx *luciano);
+int			mandelbrot(float cx, float cy);
+int			julia(float cx, float cy);
+int			colors(int i);
+int			mousepress(int button, int x, int y, t_mlx *mafalda);
+int			esc(int key, void *param);
+int			ft_exit(void *param);
+size_t		ft_strlen(const char *s);
+void		ft_putstr(char *str);
+int			check_arguments(int argc, char **argv);
 
 #endif
-
-// TODO
-// muchas mas cosas

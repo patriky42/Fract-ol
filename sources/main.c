@@ -6,43 +6,34 @@
 /*   By: pabastid <pabastid@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 20:52:26 by pabastid          #+#    #+#             */
-/*   Updated: 2023/09/06 12:06:14 by pabastid         ###   ########.fr       */
+/*   Updated: 2023/09/08 17:49:19 by pabastid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <mlx.h>
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	void	*mlx;
-	void	*mlx_window;
-	t_data	img;
-	int		i;
-	int		j;
+	t_mlx	mlx;
 
-	i = 0;
-	j = 0;
-	mlx = mlx_init();
-	mlx_window = mlx_new_window(mlx, 1920, 1080, "1, 2, 3, probando!");
-	img.img = mlx_new_image(mlx, 1920, 1080);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-			&img.endian);
-	while (i < 1920)
+	if (check_arguments(argc, argv) != 1)
+		exit(1);
+	if (argv[1][0] == '1')
 	{
-		while (j < 1080)
-		{
-			my_mlx_pixel_put(&img, i, j, 0x000000FF);
-			j++;
-		}
-		j = 0;
-		i++;
+		mlx.function = mandelbrot;
 	}
-	// TODO
-	// mas.....
-	mlx_put_image_to_window(mlx, mlx_window, img.img, 0, 0);
-	mlx_loop(mlx);
+	else
+		mlx.function = julia;
+	mlx.zoom = 1;
+	mlx.mlx = mlx_init();
+	mlx.mlx_window = mlx_new_window(mlx.mlx, 1920, 1080, "1, 2, 3, probando!");
+	mlx.image.img = mlx_new_image(mlx.mlx, 1920, 1080);
+	mlx.image.addr = mlx_get_data_addr(mlx.image.img, &mlx.image.bits_per_pixel,
+			&mlx.image.line_length, &mlx.image.endian);
+	mlx_hook(mlx.mlx_window, 2, 0, esc, NULL);
+	mlx_hook(mlx.mlx_window, 17, 0, ft_exit, NULL);
+	mlx_hook(mlx.mlx_window, 4, 0, mousepress, &mlx);
+	draw_window(&mlx);
+	mlx_loop(mlx.mlx);
 }
-
-// TODO
-// COSAS HACER

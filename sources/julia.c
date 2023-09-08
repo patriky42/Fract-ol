@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_window_image.c                                :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabastid <pabastid@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/30 21:01:34 by pabastid          #+#    #+#             */
-/*   Updated: 2023/09/06 11:49:42 by pabastid         ###   ########.fr       */
+/*   Created: 2023/09/08 15:54:55 by pabastid          #+#    #+#             */
+/*   Updated: 2023/09/08 17:40:57 by pabastid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <mlx.h>
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+// esta funcion solo comprueba si un pixel esta en mandelbrot o no
+int	julia(float cx, float cy)
 {
-	char	*dst;
+	int		i;
+	float	zx;
+	float	zy;
+	float	temp;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	i = 0;
+	zx = cx;
+	zy = cy;
+	while (i < 500 && (zx * zx + zy * zy) <= 4)
+	// las iteraciones lleguen a 500 y los valores no vayan al infinito.
+	{
+		temp = zx * zx - zy * zy + -0.569;
+		zy = 2 * zx * zy + -0.483;
+		zx = temp;
+		i++;
+	}
+	return (i);
 }

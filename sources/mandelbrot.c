@@ -1,42 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabastid <pabastid@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/31 13:06:05 by pabastid          #+#    #+#             */
-/*   Updated: 2023/09/08 15:43:43 by pabastid         ###   ########.fr       */
+/*   Created: 2023/09/07 12:59:53 by pabastid          #+#    #+#             */
+/*   Updated: 2023/09/08 15:25:24 by pabastid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <mlx.h>
 
-int	esc(int key, void *param)
+// esta funcion solo comprueba si un pixel esta en mandelbrot o no
+int	mandelbrot(float cx, float cy)
 {
-	(void)*param;
-	if (key == 53)
-		exit(1);
-	return (0);
-}
+	int		i;
+	float	zx;
+	float	zy;
+	float	temp;
 
-int	ft_exit(void *param)
-{
-	(void)*param;
-	exit(1);
-}
-
-int	mousepress(int button, int x, int y, t_mlx *mafalda)
-{
-	(void)x;
-	(void)y;
-	if (button != 4 && button != 5)
-		return (0);
-	if (button == 4)
-		mafalda->zoom /= 0.5;
-	if (button == 5)
-		mafalda->zoom *= 0.5;
-	draw_window(mafalda);
-	return (0);
+	i = 0;
+	zx = cx;
+	zy = cy;
+	while (i < 500 && (zx * zx + zy * zy) <= 4)
+	// las iteraciones lleguen a 500 y los valores no vayan al infinito.
+	{
+		temp = zx * zx - zy * zy + cx;
+		zy = 2 * zx * zy + cy;
+		zx = temp;
+		i++;
+	}
+	return (i);
 }

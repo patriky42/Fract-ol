@@ -6,7 +6,7 @@
 #    By: pabastid <pabastid@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 13:13:45 by pabastid          #+#    #+#              #
-#    Updated: 2023/08/31 12:14:26 by pabastid         ###   ########.fr        #
+#    Updated: 2023/09/08 17:35:13 by pabastid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME			=	MATIAS
 MAKEFILE		=	Makefile
 
 PUSH			=	sources/main.c $(SRCS)
-SRCS			=	sources/init_window_image.c
+SRCS			=	sources/draw_pixel.c sources/mandelbrot.c sources/hooks.c sources/julia.c sources/check_arguments.c
 OBJS			=	$(PUSH:.c=.o)
 
 RM				=	rm -f
