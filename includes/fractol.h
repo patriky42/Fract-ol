@@ -6,7 +6,7 @@
 /*   By: pabastid <pabastid@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 20:36:16 by pabastid          #+#    #+#             */
-/*   Updated: 2023/09/08 17:49:34 by pabastid         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:36:31 by pabastid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ typedef struct s_data
 
 typedef struct s_mlx
 {
-	int (*function)(float, float);
-		// solo se pone el tipo de variablle que recibe
+	int		(*function)(float, float);
 	void	*mlx;
 	void	*mlx_window;
 	t_data	image;

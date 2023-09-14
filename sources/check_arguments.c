@@ -6,7 +6,7 @@
 /*   By: pabastid <pabastid@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:06:24 by pabastid          #+#    #+#             */
-/*   Updated: 2023/09/08 17:38:17 by pabastid         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:53:55 by pabastid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	ft_putstr(char *str)
 
 int	check_arguments(int argc, char **argv)
 {
-	if (argc == 2 && ft_strlen(argv[1]) == 1 && (argv[1][0] == '1'
-			|| argv[1][0] == '2'))
+	if (argc == 2 && ft_strlen(argv[1]) == 1
+		&& (argv[1][0] == '1' || argv[1][0] == '2'))
 		return (1);
 	ft_putstr("Anda, escriba '1' si lo que quiere es imprimir Mandelbrot\n");
 	ft_putstr("O escriba '2' si lo que quiere es imprimir Julia, gracias");

@@ -6,7 +6,7 @@
 /*   By: pabastid <pabastid@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 21:01:34 by pabastid          #+#    #+#             */
-/*   Updated: 2023/09/08 17:49:33 by pabastid         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:44:18 by pabastid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
-// esta funcion rellenaa cada pixel de un color
+
 void	draw_window(t_mlx *luciano)
 {
 	int		x;
@@ -39,8 +39,6 @@ void	draw_window(t_mlx *luciano)
 			my_mlx_pixel_put(&luciano->image, x, y, colors(luciano->function(cx,
 						cy)));
 			y++;
-			// Aqui usamoss mandelbrot para en funcion del vaor i que devuelva,
-			// pintamos del color segun colors"
 		}
 		y = 0;
 		x++;

@@ -6,12 +6,12 @@
 #    By: pabastid <pabastid@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 13:13:45 by pabastid          #+#    #+#              #
-#    Updated: 2023/09/08 17:35:13 by pabastid         ###   ########.fr        #
+#    Updated: 2023/09/14 11:33:08 by pabastid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 MAKE			=	make --no-print-directory
-NAME			=	MATIAS
+NAME			=	fractol
 
 MAKEFILE		=	Makefile
 

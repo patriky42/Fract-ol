@@ -6,7 +6,7 @@
 /*   By: pabastid <pabastid@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 20:52:26 by pabastid          #+#    #+#             */
-/*   Updated: 2023/09/08 17:49:19 by pabastid         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:30:20 by pabastid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	main(int argc, char **argv)
 		mlx.function = julia;
 	mlx.zoom = 1;
 	mlx.mlx = mlx_init();
-	mlx.mlx_window = mlx_new_window(mlx.mlx, 1920, 1080, "1, 2, 3, probando!");
+	mlx.mlx_window = mlx_new_window(mlx.mlx, 1920, 1080,
+			"Aquí está tu fractol elegido!");
 	mlx.image.img = mlx_new_image(mlx.mlx, 1920, 1080);
 	mlx.image.addr = mlx_get_data_addr(mlx.image.img, &mlx.image.bits_per_pixel,
 			&mlx.image.line_length, &mlx.image.endian);
