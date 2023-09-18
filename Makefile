@@ -6,7 +6,7 @@
 #    By: pabastid <pabastid@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 13:13:45 by pabastid          #+#    #+#              #
-#    Updated: 2023/09/14 11:33:08 by pabastid         ###   ########.fr        #
+#    Updated: 2023/09/15 12:11:43 by pabastid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,8 @@ CFLAGS			=	-Wall -Wextra -Werror -I includes/mlx -I includes
 	@echo "$< compiled!"
 
 all:
+	@$(MAKE) -C includes/mlx/
+	@cp includes/mlx/libmlx.dylib .
 	@$(MAKE) $(NAME)
 
 $(NAME): $(OBJS)
@@ -35,10 +37,13 @@ $(NAME): $(OBJS)
 
 clean:
 	@$(RM) $(OBJS)
+	@$(MAKE) clean -C includes/mlx/
 	@echo "Removed all \'.o\' files\n"
 
 fclean:
 	@$(MAKE) clean
+	@$(RM) libmlx.dylib
+	@$(RM) include/mlx/libmlx.dylib
 	@$(RM) $(NAME)
 re:
 	@$(MAKE) fclean

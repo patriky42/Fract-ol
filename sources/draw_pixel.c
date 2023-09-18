@@ -6,7 +6,7 @@
 /*   By: pabastid <pabastid@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 21:01:34 by pabastid          #+#    #+#             */
-/*   Updated: 2023/09/14 11:44:18 by pabastid         ###   ########.fr       */
+/*   Updated: 2023/09/15 12:05:51 by pabastid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	draw_window(t_mlx *luciano)
+void	draw_window(t_mlx *mlx)
 {
 	int		x;
 	int		y;
@@ -30,21 +30,20 @@ void	draw_window(t_mlx *luciano)
 
 	x = 0;
 	y = 0;
-	while (x < 1920)
+	while (x < W)
 	{
-		while (y < 1080)
+		while (y < H)
 		{
-			cx = ((x * 3.0 / 1920.0) - 2.0) * luciano->zoom;
-			cy = ((y * 2.0 / 1080.0) - 1.0) * luciano->zoom;
-			my_mlx_pixel_put(&luciano->image, x, y, colors(luciano->function(cx,
-						cy)));
+			cx = ((x * 3.0 / (float)W) - 2.0) * mlx->zoom;
+			cy = ((y * 2.0 / (float)H) - 1.0) * mlx->zoom;
+			my_mlx_pixel_put(&mlx->image, x, y, colors(mlx->function(cx, cy)));
 			y++;
 		}
 		y = 0;
 		x++;
 	}
-	mlx_put_image_to_window(luciano->mlx, luciano->mlx_window,
-		luciano->image.img, 0, 0);
+	mlx_put_image_to_window(mlx->mlx, mlx->mlx_window,
+		mlx->image.img, 0, 0);
 }
 
 int	colors(int i)
