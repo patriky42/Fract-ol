@@ -6,7 +6,7 @@
 /*   By: pabastid <pabastid@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 21:01:34 by pabastid          #+#    #+#             */
-/*   Updated: 2023/09/15 12:05:51 by pabastid         ###   ########.fr       */
+/*   Updated: 2023/09/22 11:05:27 by pabastid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	draw_window(t_mlx *mlx)
+void	draw_window(t_mlx *mlx) //esta funcion rellena cada pixel de un color
 {
 	int		x;
 	int		y;
@@ -34,10 +34,11 @@ void	draw_window(t_mlx *mlx)
 	{
 		while (y < H)
 		{
-			cx = ((x * 3.0 / (float)W) - 2.0) * mlx->zoom;
+			cx = ((x * 3.0 / (float)W) - 2.0) * mlx->zoom; //mlx.zoom en el main = 1; porque aqui queremos que si no hay zoom haga el calculo entre parentesis.
 			cy = ((y * 2.0 / (float)H) - 1.0) * mlx->zoom;
 			my_mlx_pixel_put(&mlx->image, x, y, colors(mlx->function(cx, cy)));
 			y++;
+			//Aqui usamos mandelbrot para en funcion del valor i que devuelva pintamos del color segun colors.
 		}
 		y = 0;
 		x++;
